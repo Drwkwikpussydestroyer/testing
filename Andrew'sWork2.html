@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        overflow-y: scroll; /* Allows scrolling on the entire page */
+        margin: 0;
+        background-color: #131313;
+        height: 2000px; 
+    }
+
+
+.Home_div, .About_me_div, .Contact_div, .More_div {
+      color: white;
+      text-shadow: 2px 1px rgba(207, 207, 207, 0.2);
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      padding: 14px;
+      background-color: rgba(126, 126, 126, 0.2);
+      border-radius: 50px;
+      box-shadow: 0 9px 9px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      transition: all 0.3s ease;
+      height: 16px;
+      width: 90px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .Home_div:hover, .About_me_div:hover, .Contact_div:hover, .More_div:hover {
+      background-color: rgba(0, 0, 0, 0.208);
+    }
+    
+
+    .Home_div    { left: 930px;  top: 30px; }
+    .About_me_div { left: 1070px; top: 30px; }
+    .Contact_div  { left: 1210px; top: 30px; }
+    .More_div     { left: 1350px; top: 30px; }
+
+    .active-button {
+      background-color: white !important;
+      color: black !important;
+    }
+
+    
+    .About_me_container,
+    .Contact_container,
+    .More_container {
+      display: none;
+    }
+
+        #Top_nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.232);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            transition: top 0.3s ease, opacity 0.3s ease;
+            z-index: 9999;
+            height: 80px; /* Adjusted height for the video */
+        }
+
+        /* When scrolling down, hide the Top_nav */
+        #Top_nav.hide {
+            top: -60px; /* Move the nav up */
+            opacity: 0;  /* Make it invisible */
+        }
+
+         
+        /*.home_video{
+            position: absolute;
+            top: -300px; 
+            left: 0;
+            width: 800px; 
+            height: 800px;
+            object-fit: cover;
+            z-index: -1; 
+        } */
+        
+        
+
+        #Home_video {
+      position: absolute;
+      top:  0px;
+      left: 0px;
+      background-color: #fe0000c2;
+      height: 980px;
+      width: 710px; 
+      margin: 50px auto;
+      background-size: cover;
+      background-position: center;
+      
+      cursor: pointer;
+      transition: background-image 0.5s ease;
+      animation: slideInLeft 7s forwards;
+      z-index: 0;
+    }
+
+       /* .Home_container {
+    width: 1532px;
+    height: 2000px; 
+    border: 2px solid #44444400;
+    overflow-y: scroll;  
+    overflow-x: hidden;
+    padding: 1px;
+    background-color: #131313;
+    position: absolute;
+    right: 0px;
+    top: -300px;
+    z-index: 1;
+}
+
+
+
+/* Hide the scrollbar */
+.Home_container::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+        .hello{
+            position: absolute;
+            top: -48px;
+            left: 5px;
+            color: rgb(0, 0, 0);
+
+            color: white;
+            text-shadow: 4px 2px rgba(0, 0, 0, 0.344);
+            font-size: 140px;
+            font-family: Arial, sans-serif;
+            position: absolute;
+            transition: all 0.3s ease;
+            height: 16px;
+            width: 90px;
+            text-align: center;    
+            animation: slideIn 2s forwards;
+            z-index: 9999;
+            
+            
+
+   }    
+
+   
+
+   /*.typing {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid rgb(254, 252, 252);
+      width: 70ch;
+      margin: 200px auto;
+      font-size: 2rem;
+      opacity: 0; 
+      position: absolute;
+      top: 690px;
+      left: 120px;
+      color: #f9fafb;
+      font-weight: bold;
+      font-size: 5rem;
+      animation: typing 5s steps(40, end) forwards, blink 0.7s step-end infinite;
+      z-index: 3;
+    }*/
+    
+    .typing {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid rgb(255, 255, 255);
+      width: 30ch;
+      margin: 200px auto; /* So you have to scroll to see it */
+      font-size: 2rem;
+      opacity: 0; /* Start hidden */
+      position: absolute;
+      top: 9590px;
+      left: 700px;
+      font-size: 50px;
+      color: #ffffff;
+      
+
+
+    }
+
+    .typing.animate {
+      animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
+      opacity: 1;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 30ch }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .typing.animate {
+      animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
+      opacity: 1;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 30ch; }
+    }
+
+    .text1 {
+    color: aliceblue;
+    background-color: #2a2a2a75;
+    text-align: justify;
+    content: center;
+    padding: 30px;
+    height: 200px;
+    width: 700px;
+    border-radius: 50px;
+    position: absolute;
+    top: 9900px;
+    left: 680px;
+    letter-spacing: 2px;
+    line-height: 25px;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.495);
+    animation: slideIn 6s forwards;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  
+
+  .text3{
+    color: rgb(240, 248, 255);
+    background-color: #2a2a2a75;
+    text-align: justify;
+    content: center;
+    padding: 30px;
+    height: 650px;
+    width: 500px;
+    border-radius: 50px;
+    position: absolute;
+    top: 1730px;
+    left: 890px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.495);
+    size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+    }
+
+  .text3.animate {
+    animation-play-state: running;
+  }
+
+
+    .text6 {
+    color: aliceblue;
+    background-color: #2a2a2a00;
+    text-align: justify;
+    content: center;
+    padding: 30px;
+    height: 240px;
+    width: 600px;
+    border-radius: 50px;
+    position: absolute;
+    top: 920px;
+    left: 850px;
+    letter-spacing: 4px;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    animation-play-state: paused;
+    z-index: 99999;
+
+
+    animation-name: slideIn;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+
+  }
+
+  .text6.animate {
+    animation-play-state: running
+  }
+  
+    
+
+  .text7 {
+    position: absolute;
+    top: 1080px;
+    left: 570px;
+    color: #f2f6f8;
+    font-family: Arial, sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    width: 700px;
+    z-index: 999999;
+    
+
+
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+  }
+
+  .text7.animate {
+    animation-play-state: running;
+  }
+
+  .text8 {
+    position: absolute;
+    top: 2820px;
+    left: 100px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    
+  
+
+
+    animation-name: slideUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+
+  }
+
+  .text8.animate {
+    animation-play-state: running;
+  }
+
+    .text3{
+    color: rgb(240, 248, 255);
+    background-color: #2a2a2a75;
+    text-align: justify;
+    content: center;
+    padding: 30px;
+    height: 650px;
+    width: 500px;
+    border-radius: 50px;
+    position: absolute;
+    top: 1730px;
+    left: 890px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.495);
+    size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+    }
+
+  .text3.animate {
+    animation-play-state: running;
+  }
+
+
+
+    .overview {
+      letter-spacing: 10px;
+      font-weight: bold;
+      font-family: Arial; 
+      width: 60px;
+      size:500px;
+      z-index: 2;  /* Added z-index for layering */
+      
+      animation-name: slideUp;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+    
+    }
+
+  .overview.animate {
+    animation-play-state: running;
+  
+    }
+
+    
+.content2 {
+    position: absolute;
+    right: 1364px;
+    top: 1081px;
+    background-color: #96046a;
+    border-radius: 0% 0% 70% 30% / 20% 60% 70% 70%;
+    width: 155px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 9px 9px rgb(0, 0, 0);
+    animation: slideIn 4s forwards;
+    z-index: 0;
+
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+      
+} 
+
+.left_content {
+      background-color: #dadada;
+      position:absolute;
+      top: 1740px;
+      box-shadow: 0 9px 9px rgba(0, 0, 0, 0.495);
+      height:800px;
+      width: 845px;
+      border-radius: 60% 95% 90% 85% / 90% 90% 50% 70%;
+      cursor:pointer; 
+      overflow: hidden;
+      object-fit: cover;
+      z-index: 10;
+      left: -10px;
+}
+
+
+  .text3{
+    color: rgb(240, 248, 255);
+    background-color: #2a2a2a69;
+    text-align: justify;
+    content: center;
+    padding: 30px;
+    height: 650px;
+    width: 500px;
+    border-radius: 50px;
+    position: absolute;
+    top: 1730px;
+    left: 890px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.495);
+    size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+    animation-name: slideInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+    }
+
+  .text3.animate {
+    animation-play-state: running;
+  }
+
+      .left_content video{
+
+      height:800px;
+      width: 845px;
+      border-radius: 30% 95% 90% 25% / 90% 50% 50% 70%;
+      object-fit: cover; /* this is the magic that makes the video fill */
+      border-radius: inherit; /* inherits the funky blob border */
+      z-index: 100;
+      }
+
+
+
+      @keyframes slideIn {
+      from { transform: translateX(-15%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(4%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    } 
+
+    
+    .content_cut1 {
+      position: absolute;
+      top:  2730px;
+      left: 0px;
+      background-color: #0a0a0a;
+      height: 50px; /* Added height for visibility */
+      width: 3000px; /* Added width for full coverage */
+      z-index: 10;
+    }
+
+
+    .shape1 {
+      position: absolute;
+      top:  3600px;
+      left: 1450px;
+      background-color: #c88b2f;
+      height: 120px; /* Added height for visibility */
+      width: 70px; /* Added width for full coverage */
+      z-index: 0;
+      border-radius: 100% 90% 40% 100% / 100% 60% 100% 100%;
+      animation: slideIn 7s forwards;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape2 {
+      position: absolute;
+      top:  2692px;
+      left: 951px;
+      background-color: #6579e9;
+      height: 140px; /* Added height for visibility */
+      width: 90px; /* Added width for full coverage */
+      z-index: 0; /* Updated z-index */
+      border-radius: 30% 50% 90% 90% / 70% 90% 40% 90%;
+      animation: slideIn 7s forwards;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape3 {
+      position: absolute;
+      top:  3762px;
+      left: 120px;
+      background-color: #a373a5;
+      height: 100px; /* Added height for visibility */
+      width: 70px; /* Added width for full coverage */
+      z-index: 10;
+      border-radius: 50% 70% 90% 90% / 70% 90% 40% 50%;
+      animation: slideIn 7s forwards;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+    .shape4 {
+      position: absolute;
+      top:  2650px;
+      left: 930px;
+      background-color: #f4d01e; /* New shape color */
+      height: 70px; /* New height for visibility */
+      width: 50px; /* New width for full coverage */
+      z-index: 10;
+      border-radius: 30% 50% 70% 90% / 60% 40% 50% 30%;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      animation: slideInLeft 4s forwards;
+    }
+    .shape5 {
+      position: absolute;
+      top:  3602px;
+      left: 40px;
+      background-color: #ff9195; /* New shape color */
+      height: 180px; /* New height for visibility */
+      width: 90px; /* New width for full coverage */
+      z-index: 10;
+      border-radius: 50% 70% 90% 90% / 70% 90% 40% 50%;
+      animation:slideIn 4s forwards;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape6 {
+      position: absolute;
+      top:  4200px;
+      left: 590px;
+      background-color: #9a5987; /* New shape color */
+      height: 150px; /* New height for visibility */
+      width: 70px; /* New width for full coverage */
+      z-index: 10;
+      border-radius: 50% 70% 90% 90% / 70% 90% 40% 50%;
+      animation: slideInLeft 4s forwards;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape7 {
+      position: absolute;
+      top:  1170px;
+      left: 10px;
+      background-color: #6ea2c4d7; /* New shape color */
+      height: 250px; /* New height for visibility */
+      width: 200px; /* New width for full coverage */
+      z-index: 34;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape8 {
+      position: absolute;
+      top:  800px;
+      left: 210px;
+      background-color: #8079db; /* New shape color */
+      height: 350px; /* New height for visibility */
+      width: 190px; /* New width for full coverage */
+      z-index: 0;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      /*animation: bounce 1.5s infinite*/
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    
+    @keyframes rotaterev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(180deg); }
+    }
+
+  
+
+
+    .shape9 {
+      position: absolute;
+      top:  900px;
+      left: 90px;
+      background-color: #0a3a79; /* New shape color */
+      height: 150px; /* New height for visibility */
+      width: 70px; /* New width for full coverage */
+      z-index: 0;
+      border-radius: 50% 70% 90% 90% / 70% 90% 40% 50%;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      
+    }
+    .shape10 {
+      position: absolute;
+      top:  1000px;
+      left: 270px; /* Updated left position */
+      background-color: #b484ce; /* New shape color */
+      height: 380px; /* New height for visibility */
+      width: 170px; /* New width for full coverage */
+      z-index: 10;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      
+    } 
+    
+
+    .shape11 {
+      position: absolute;
+      top:  870px;
+      left: 1150px;
+      background-color: #4383d7;
+      height: 180px; /* New height for visibility */
+      width: 320px; /* New width for full coverage */
+      z-index: -1;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      border-radius: 20px;
+      animation: rotate 30.5s infinite;
+      
+    }
+
+    .shape12 {
+      position: absolute;
+      top:  860px;
+      left: 50px;
+      background-color: #b7689e; /* New shape color */
+      height: 390px; /* New height for visibility */
+      width:187px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      animation: rotaterev 10.5s infinite
+      
+    }
+
+    .shape13 {
+      position: absolute;
+      top:  1360px;
+      left: -10px;
+      background-color: #2a2f92; /* New shape color */
+      height: 190px; /* New height for visibility */
+      width:387px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape14 {
+      position: absolute;
+      top:  1460px;
+      left: 110px;
+      background-color: #922a42; /* New shape color */
+      height: 240px; /* New height for visibility */
+      width: 150px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape15{
+      position: absolute;
+      top:  940px;
+      left: 360px;
+      background-color: #cf7e44; /* New shape color */
+      height: 140px; /* New height for visibility */
+      width: 200px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape16 {
+      position: absolute;
+      top:  1610px;
+      left: 320px;
+      background-color: #6944cf; /* New shape color */
+      height: 140px; /* New height for visibility */
+      width: 200px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      animation: rotate 4.5s infinite
+    }
+
+    .shape17 {
+      position: absolute;
+      top:  2780px;
+      left: -20px;
+      background-color: #274779; /* New shape color */
+      height: 140px; /* New height for visibility */
+      width: 90px; /* New width for full coverage */
+      z-index: 9999;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      animation: rotate 5.5s infinite
+
+    }
+    
+    .shape18 {
+      position: absolute;
+      top:  850px;
+      left: 590px;
+      background-color: #2a2f92; 
+      height: 100px; /* New height for visibility */
+      width: 100px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+    }
+
+    .shape18:hover {
+      position:absolute;
+      top:760px ;
+      left: 560px ;
+      width: 220px;
+      height: 220px;
+      animation: pulse 9s infinite;
+    }
+    
+    .shape19 {
+      position: absolute;
+      top: 1500px;
+      left: 900px;
+      background-color: #ae6b6b;
+      height: 150px; /* Added height for visibility */
+      width: 550px; /* Added width for full coverage */
+      border-radius: 20px;
+      z-index: -3;
+      animation: rotaterev 14.5s infinite
+
+    }
+    .shape20 {
+      position: absolute;
+      top:  -130px;
+      left: -350px;
+      background-color: #b7689e; /* New shape color */
+      height: 390px; /* New height for visibility */
+      width:987px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      animation: rotaterev 53.5s infinite
+      
+    }
+
+    .shape21 {
+      position: absolute;
+      top:  450px;
+      left: 520px;
+      background-color: #2a2f92; /* New shape color */
+      height: 190px; /* New height for visibility */
+      width:887px; /* New width for full coverage */
+      z-index: 8;
+      border-radius: 20px;
+      box-shadow: 0 9px 9px rgb(0, 0, 0);
+      animation: rotate 45s infinite
+    }
+
+    
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+
+
+      .shape14:hover, .shape15:hover {
+
+      animation: rotate 1s infinite
+      
+    }
+
+  
+
+    #joseFrancis {
+      position: absolute;
+      top:  2630px;
+      left: 890px;
+      background-color: #fe0000c2;
+      height: 980px;
+      width: 630px; 
+      margin: 50px auto;
+      background-size: cover;
+      background-position: center;
+      border-radius: 70% 0% 00% 90% / 70% 30% 70% 50%;
+      cursor: pointer;
+      transition: background-image 0.5s ease;
+      
+    }
+
+    .text4_ikoy {
+      position: absolute;
+      top:  2970px;
+      left: 80px;
+      background-color: #1f1f1f98;
+      height: 450px; /* Added height for visibility */
+      width: 700px; 
+      color: rgb(240, 248, 255);
+    background-color: #2a2a2a75;
+    text-align: justify;
+    content: center;
+    padding: 30px;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.495);
+    size: 25px;
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    
+    }
+
+  .text4_ikoy.animate {
+    animation-play-state: running;
+  }
+      
+
+
+       
+
+       #chylle {
+      position: absolute;
+      top:  3560px;
+      left: -20px;
+      background-color: #202020fd;
+      height: 780px;
+      width: 710px;
+      margin: 50px auto;
+      background-size: cover;
+      background-position: center;
+      border-radius: 70% 30% 70% 90% / 70% 30% 70% 50%;
+      cursor: pointer;
+      transition: background-image 0.5s ease;
+     
+
+        }
+       
+
+       .text5_kei {
+        position: absolute;
+        top: 3750px;
+        left: 750px;
+        background-color: #2a2a2a75;
+        height: 310px;
+        width: 680px;
+        color: rgba(0, 0, 0, 0.495);
+        animation: slideIn 5s forwards;
+        border-radius: 50px;
+        color: rgb(240, 248, 255);
+        padding: 30px;
+        letter-spacing: 2px;
+        line-height: 30px;
+        animation-name: slideInLeft;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+    
+    }
+
+  .text5_kei.animate {
+    animation-play-state: running;
+  }
+       
+       
+    #growingDiv {
+      position: fixed;
+      bottom: 0px;
+      left: 10px;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: width 0.2s, height 0.2s;
+      border-radius: 10px;
+      
+    }
+
+    .slideText {
+      position: absolute;
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      white-space: nowrap;
+      color: white;
+      font-size: 1.2em;
+    }
+
+    .leftText {
+      transform: translateX(-150%);
+      left: 10px;
+      position: absolute;
+      bottom: 500px;
+      letter-spacing: 10px;
+      font-weight: bold;
+      font-family: Arial; 
+      
+
+      /* Adjusted to 500px for visibility */
+    }
+
+    .rightText {
+      transform: translateX(150%);
+      right: 10px;
+      font-weight: bold;
+      font-size: 10cap; /* Corrected from 50cap to 50px */
+      
+    }
+
+    /* Show classes */
+    .show .leftText {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .show .rightText {
+      transform: translateX(0);
+      opacity: 1;
+    }
+       
+    
+    .video-wrapper {
+      position: absolute;
+      width: 360px;
+      height: 240px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .video1-wrapper {
+      position: absolute;
+      width: 1430px;
+      height: 580px; 
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .video2-wrapper {
+      position: absolute;
+      top:5500px;
+      left:0;
+      width:400px;
+      height:560px;
+      z-index:5;
+      
+     
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: pointer;
+      display: block;
+      
+    }
+
+    /* Individual positions */
+    #video1-wrapper {
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      z-index: 20;
+    }
+
+    
+
+    #video3-wrapper {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #video4-wrapper {
+      bottom: 50%;
+      right: 0%;
+      transform: translate(-50%, 0);
+    }
+
+    #video5-wrapper {
+      position: absolute;
+      bottom: 5px;
+      width: 480px;
+      height: 250px; 
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+      top: 1500px;
+      right: 200px;
+      z-index: 1000;
+      
+    }
+
+    .wave {
+              position: absolute;
+              bottom: 10px;
+              width: 95%;
+              height: 20%;
+              background: linear-gradient(135deg, rgba(29, 119, 110, 0.081), rgba(99, 165, 246, 0.7), rgba(101, 211, 245, 0.152));
+              clip-path: circle(50% at 50% 50%);
+              animation: wave-move 8s infinite alternate ease-in-out;
+              filter: blur(60px);
+          }
+          .wave:nth-child(2) {
+              position: absolute;
+              left: 0px;
+              top: -470px;
+              width: 30%;
+              height: 86%;
+              background: linear-gradient(135deg, rgba(32, 125, 138, 0.7), rgba(163, 22, 107, 0.714));
+              clip-path: ellipse(60% 50% at 40% 50%);
+              animation-duration: 6s;
+              filter: blur(90px);
+          }
+          .wave:nth-child(3) {
+              position: absolute;
+              top: -110px;
+              left: 10px;
+              width: 90%;
+              height: 30%;
+              background: linear-gradient(135deg, rgba(22, 84, 112, 0.6), rgba(162, 92, 127, 0.888));
+              clip-path: ellipse(50% 60% at 60% 60%);
+              animation-duration: 9s;
+              filter: blur(90px);
+          }
+          @keyframes wave-move {
+              0% { transform: translate(-10px, -10px) rotate(0deg); }
+              100% { transform: translate(10px, 10px) rotate(5deg); }
+          }
+
+
+    .start {
+      position:absolute;
+      top:4580px;
+      left:50px;
+      color: white;
+      font-weight:bold;
+      font-size:150px;
+      
+        animation-name: slideIn;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+    
+    }
+
+  .start.animate {
+    animation-play-state: running;
+  }
+
+    .background1{
+      position:absolute;
+      top: 4000px;
+      left: 0px;
+      height:1000px;
+      width: 100%;
+      background: linear-gradient(to bottom, #04040467, #8face7);
+      z-index: -1;
+      
+    }
+
+    .background2{
+      position:absolute;
+      top: 100px;
+      left: 0px;
+      height:2745px;
+      width: 100%;
+      background: linear-gradient(to bottom, #e3b97f00, #030e3a, #e3b97f00);
+      z-index: -1;
+      
+    }
+
+    .background3{
+      position:absolute;
+      top: 5000px;
+      left: 0px;
+      height:2745px;
+      width: 100%;
+      background: linear-gradient(to bottom, #00000097, #0a0b32, #00000000);
+      z-index: -3;
+      
+    }
+
+    .text_about {
+      position: absolute;
+      top: 5100px;
+      left: 50px;
+      color: white;
+      font-weight:bold;
+      font-size:100px;
+      z-index: 1;
+      animation-name: slideInLeft;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+      cursor: pointer;
+    
+    }
+
+  .text_about.animate {
+    animation-play-state: running;
+  
+    }
+
+    .box1 {
+    opacity: 0;
+    animation-name: slideUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    position: absolute;
+    color:white;
+    top: 1000px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: white;    
+    z-index: 9999;
+  }
+  .box1.animate {
+    animation-play-state: running;
+  }
+
+  /* Box 2 */
+  .box2 {
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    color: #ffffff;
+    width: 100px;
+    height: 100px;
+    background-color: white; 
+    z-index: 9999;
+  }
+  .box2.animate {
+    animation-play-state: running;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+  .text1_about {
+    position:absolute;
+    top: 5300px;
+    left: 650px;
+    color:white;
+    width: 850px;
+    height:60px;
+    font-size: 20px;
+    letter-spacing: 4px;
+    line-height: 40px;
+    
+    
+
+    
+    }
+
+  
+    .summary{
+      position:absolute;
+      top: 8000px;
+      background-color: #0a0a0a;
+      width: 1000px;
+      height: 500px;
+    }
+
+    </style>
+</head>
+<body class = "body">
+    <div class="Top_nav" id="Top_nav">
+        <div onclick="showHome()" class="Home_div" id="Home_btn">Home</div>
+          <div onclick="showAbout()" class="About_me_div" id="About_btn">About Me</div>
+        <div onclick="showContact()" class="Contact_div" id="Contact_btn">Contact</div>
+        <div onclick="showMore()" class="More_div" id="More_btn">More</div>
+    </div>
+
+    <div class="Home_container" id="Home_container">
+
+        <h1 class="hello">WELCOME TO ANDREW'S PORTFOLIO</h1>
+        
+  <!-- Positioned video wrappers -->
+          <div id="video1-wrapper" class="video1-wrapper">
+            <video id="video1" autoplay muted playsinline></video>
+          </div>
+
+
+
+          <div class = "text1">
+                Hi, I am Andrew and i made this website. I wanted to showcase what i've learned and experienced in one work, and so i made this. I initially wasn't a huge fan of html and css, eventually i got the hang of it, and so i incorporated my learnings in this work.  I'm sure there are many mistakes and inaccuracies you may see but that's point; to learn by falling short. I guess that's a good metaphor for myself as creator of this website and as a person. i really like being exposed to things i'm unfamiliar of, and html, css, and javascript is one them. I hope you'll like my work and provide valuable insights for me to improve.  
+          </div>
+          
+              <div class = "text3" >
+                  <h1 class ="overview"> an overview about Andrew's work</h1>
+                        i am learning web development and this website is one of my first work, i essentially wanted to create a functional website where i can incorporate what i've learned in my self studies while also practicing web development skills. my work comprises of multiple content about myself, my experiences, my family, my lover, my friends, my hobbies and classmates. I'm unsure yet what to take in college, wether Information Technology or Computer Science but one thing i'm certain, i want to be working in the IT field. Making this website is one step towards the field i chose. and so this Home page will be comprised of little bits of everything, especially brief background of people that helped not just in school but also in life. I hope you enjoy my work. 
+              </div>
+
+                  <div class = "text4_ikoy" >
+                        <h1 class ="ikoy_name" style="font-family: Arial, sans-serif;" >Jose Francis <br> Fornillos </h1>
+                            This is my boy Jose Francis, he is one of the few people who influenced me to further learn programming. Essentially he is one of the main reason why i made this portfolio website, I consider him one of the biggest influencer in my life because he didn't just inspire me to do better but also live better. He always pushes me to do better, and sets a standard i should always meet, he is truly great friend and mentor. We may came from different social backgrounds, have different hobbies but our interest aligns, we often talk about self improvement, things we want to try out, and what we want in life. He is one of the most amazing people I've met, it still amazes me how such a person exist. i really think he is the smartest person I've ever met, he really likes men that are hardest of the hard and may be gay sometimes but he still mah boi, he a homie fr. 
+                  </div>
+
+                        <div class = "text5_kei" > 
+                            <h1>Chylle Nakeisha <br> Iligan</h1> 
+                                This is Kei, she is one of the main design inspiration for this website. Some of the design that you will see in my website are inspired off of her work. I really admire Kei's design and structural thinking, and i wanted to compare and test my desgin thinking in web development to her's. Kei is amazingly artistic and excels academically, she always aim to make the best output she can, she never settles for mediocracy. she sets a standard i want to always meet.   
+                        </div>
+                    <div class = "text6" > I am currently a Grade 12 Student in Asia Pacific College under the STEM IT strand. I am very interested in any computer related concepts and developments. I started creating this website around April 1st, 2025. i initially didn't know what to put in this website, i just started creating whatever. This work is a summary of my self learning and experiments in this website </div>
+                  <div class = "text7">Hello, <br>I'm Andrew</div>
+              <div class = "text8">Web Inspirations</div>
+          <div class="typing" id="typeText">Andrew's First Portfolio</div>
+            
+          <div CLASS = "left_content"id="left_content" onclick="changeVideo()">
+              <video id="left_contentvid" width="300" height="200" autoplay muted playsinline>
+                <source id="videoSource" src="aly.MOV" type="video/mp4">
+              
+            </video>
+          </div>
+          
+              <div id="joseFrancis"></div>
+            <div id ="chylle"></div>
+          <div class = "as"></div>
+
+          <div class = "shape1"></div>
+            <div class = "shape2"></div>
+              <div class = "shape3"></div>
+                <div class = "shape4"></div>
+                  <div class = "shape5"></div>
+                    <div class = "shape6"></div>
+                      <div class = "shape7"></div>
+
+                        <div class = "shape7"></div>
+                          <div class = "shape8"></div>
+                            <div class = "shape10"></div>
+                        <div class = "shape11"></div>
+                      <div class = "shape12"></div>
+                    <div class = "shape13"></div>
+                  <div class = "shape14"></div>
+                <div class = "shape15"></div>
+              <div class = "shape16"></div>
+            <div class = "shape17"></div>
+          <div class = "shape19"></div>
+        <div class = "shape20"></div>
+          <div class = "shape21"></div>
+
+          <div class = "start">Welcome to Portfolio1</div>
+              <div class = "background1"></div>
+                <div class = "background2"></div>
+                  <div class = "background3"></div>
+
+                  <div onclick="showText_about()" class="text_about" id="text_about">About Me</div>
+                      <div class = "text1_about"> My name is Earl Andrew Crispino Panimdim Alvarez, I'm 19 years old.
+                         I currently live in Bangkal Makati with my Mom. I'm also studying in Asia Pacific College as a grade 12 student, 
+                         in my spare time, i work on this portfolio website, but often times you'll me playing basketball or hanging out with my friends.       
+                      </div>   
+                        <div id="video2-wrapper" class="video2-wrapper">
+                              <video id="video2" autoplay muted playsinline></video>
+                          </div>
+                            <div class = "shape22"></div>
+
+
+
+          <div class = "summary"> <h1>Summary</h1></div>
+
+      </div> <!-- Closing the Home_container div -->
+      
+      <div class="About_me_container" id="About_me_container">
+        <div class="wave" id = "wave"></div>
+        <div class="wave" id = "wave"></div>
+        <div class="wave" id = "wave"></div>
+    
+        
+        
+        <div class = "shape9"></div>
+        
+
+        
+        <div id="video3-wrapper" class="video-wrapper">
+          <video id="video3" autoplay muted playsinline></video>
+        </div>
+
+        <div id="video4-wrapper" class="video-wrapper">
+          <video id="video4" autoplay muted playsinline></video>
+        </div>  
+
+        <div id="video5-wrapper" class="video-wrapper">
+          <video id="video5" autoplay muted playsinline></video>
+        </div>
+          
+
+        <div id="growingDiv">
+          <div class="slideText leftText">I am currently a Grade 12 Student <br> in Asia Pacific College under the <br> STEM-IT strand.</div>
+          <div class="slideText rightText">_____ I'm Andrew ______________</div>
+        </div>
+
+        
+          
+      </div>
+      <div class="Contact_container" id="Contact_container">contact content
+
+        <div class="box1">Box 1</div>
+        <div class="box2">Box 2</div>
+
+          <div class = "shape1"></div>
+          <div class = "shape2"></div>
+          <div class = "shape3"></div>
+          <div class = "shape4"></div>
+          <div class = "shape5"></div>
+          <div class="typing" id="typing">Hello, I appear when you scroll!</div>
+          <div class = "shape7"></div>
+          <div class = "shape8"></div>
+          <div class = "shape10"></div>
+          <div class = "shape11"></div>
+          <div class = "shape12"></div>
+
+
+      </div>
+      <div class="More_container" id="More_container">More content
+
+        
+        <h1 class="hello">WELCOME TO ANDREW'S WORK</h1>
+        <video autoplay muted loop id="bgVideo">
+            <source src="home_vid.mp4" type="video/mp4" class="home_video">
+        </video>
+
+          <div class = "shape1"></div>
+          <div class = "shape2"></div>
+          <div class = "shape3"></div>
+          <div class = "shape4"></div>
+          <div class = "shape5"></div>
+          
+          <img src = "Image.jpg" class = shape18>
+
+      </div>
+    
+
+<script>
+
+      
+(function () {
+      let lastScrollTop = 0;
+      const myDiv = document.getElementById('Top_nav');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+          myDiv.classList.add('hide'); // Scrolling down
+        } else {
+          myDiv.classList.remove('hide'); // Scrolling up
+        }
+
+        lastScrollTop = Math.max(scrollTop, 0);
+      });
+    })();
+
+    // IntersectionObserver for animations
+    
+
+    //reusable animate function
+    function initScrollAnimations(selector, animationClass = 'animate', threshold = 0.5) {
+    const elements = document.querySelectorAll(selector);
+
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(animationClass);
+          observerInstance.unobserve(entry.target); // Animate only once
+        }
+      });
+    }, { threshold });
+
+    elements.forEach(el => observer.observe(el));
+  }
+
+  // Example usage for your boxes:
+  initScrollAnimations('.box1');
+  initScrollAnimations('.box2');
+  initScrollAnimations('.text6');
+  initScrollAnimations('.text7');
+  initScrollAnimations('.text3');
+  initScrollAnimations('.left_content');
+  initScrollAnimations('.text8');
+  initScrollAnimations('.text4_ikoy');
+  initScrollAnimations('.text5_kei');
+  initScrollAnimations('#chylle');
+  initScrollAnimations('.start');
+  initScrollAnimations('.text_about');
+  initScrollAnimations('.overview');
+  initScrollAnimations('.text1_about');
+
+    
+
+
+
+
+    function highlightActive(buttonId) {
+      // Reset all buttons
+      document.getElementById('Home_btn').classList.remove('active-button');
+      document.getElementById('About_btn').classList.remove('active-button');
+      document.getElementById('Contact_btn').classList.remove('active-button');
+      document.getElementById('More_btn').classList.remove('active-button');
+      // Highlight selected one
+      document.getElementById(buttonId).classList.add('active-button');
+    }
+
+    function showHome() {
+      highlightActive('Home_btn');
+      document.getElementById('Home_container').style.display = 'block';
+      document.getElementById('About_me_container').style.display = 'none';
+      document.getElementById('Contact_container').style.display = 'none';
+      document.getElementById('More_container').style.display = 'none';
+    }
+
+    function showAbout() {
+      highlightActive('About_btn');
+      document.getElementById('About_me_container').style.display = 'block';
+      document.getElementById('Home_container').style.display = 'none';
+      document.getElementById('Contact_container').style.display = 'none';
+      document.getElementById('More_container').style.display = 'none';
+    }
+
+    function showContact() {
+      highlightActive('Contact_btn');
+      document.getElementById('Contact_container').style.display = 'block';
+      document.getElementById('About_me_container').style.display = 'none';
+      document.getElementById('Home_container').style.display = 'none';
+      document.getElementById('More_container').style.display = 'none';
+    }
+
+    function showMore() {
+      highlightActive('More_btn');
+      document.getElementById('More_container').style.display = 'block';
+      document.getElementById('Contact_container').style.display = 'none';
+      document.getElementById('About_me_container').style.display = 'none';
+      document.getElementById('Home_container').style.display = 'none';
+    }
+
+
+    function showText_about() {
+      highlightActive('About_btn');
+      document.getElementById('About_me_container').style.display = 'block';
+      document.getElementById('Home_container').style.display = 'none';
+      document.getElementById('Contact_container').style.display = 'none';
+      document.getElementById('More_container').style.display = 'none';
+    }
+    // Set the Home button as initially active
+    window.onload = function() {
+      highlightActive('Home_btn');
+      document.getElementById('Home_container').style.display = 'block';
+    };
+
+    const left_contentvideos = [
+      "kei.MOV",
+      "malvar.MOV",
+      "heyleyts.mov",
+      "aly.MOV",
+      "jokim.MOV",
+      "concert.mp4",
+      "mcdo.MOV",
+      "tolog.MOV",
+     ];
+  
+    let left_contentIndex = 0;
+    const videoElement = document.getElementById("left_contentvid");
+    const videoSource = document.getElementById("videoSource");
+  
+    function changeVideo() {
+      left_contentIndex = (left_contentIndex + 1) % left_contentvideos.length;
+      videoSource.src = left_contentvideos[left_contentIndex];
+      videoElement.load();
+      videoElement.play();
+    }
+  
+    // ⏭️ Auto-play next video when one ends
+    videoElement.addEventListener("ended", changeVideo);
+
+
+    let toggled = false;
+
+    
+    
+
+  
+
+  
+  function createSlideshow(containerId, photos) {
+    const container = document.getElementById(containerId);
+    let index = 0;
+
+    function showPhoto() {
+      container.style.backgroundImage = `url(${photos[index]})`;
+    }
+
+    // Initial display
+    showPhoto();
+
+    // Auto change
+    setInterval(() => {
+      index = (index + 1) % photos.length;
+      showPhoto();
+    }, 5000);
+
+    // On click, change immediately
+    container.addEventListener("click", () => {
+      index = (index + 1) % photos.length;
+      showPhoto();
+    });
+  }
+
+  // Call the function for each slider
+  createSlideshow("chylle", [ "myOnlyBaby.jpg", "stolenkei.jpg",]);
+  createSlideshow("joseFrancis", ["ikoyrizz.jpg", "barowng.jpg", "ikoy_smiling.jpg", "IMG_9574.jpg", "IMG_9587.jpg", "arts.jpg", "ikoy-baybe.png", "chopped.jpg"]);
+  //createSlideshow("Home_video", ["myOnlyBaby.jpg", "kiss.jpg","keikei.jpg", "stolenkei.jpg", "litolkei.jpg"]);
+
+  const growingDiv = document.getElementById('growingDiv');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const newSize = 200 + scrollY * 0.9;
+
+    growingDiv.style.width = `${newSize}px`;
+    growingDiv.style.height = `${newSize}px`;
+
+    // Toggle slide-in text based on scroll
+    if (scrollY > 1) {
+      growingDiv.classList.add('show');
+    } else {
+      growingDiv.classList.remove('show');
+    }
+  });
+  
+
+
+
+
+
+  const videoPlaylists = {
+      player1: ['smiling.MOV','theatre.MOV','P.E.NEW.mp4', 'concert.mp4'],
+      player2: ['RESEARCH.mp4', 'porman.MOV'],
+      player3: ['PE.MOV', 'concert.mp4'],
+      player4: ['home_vid.mp4', 'concert.mp4'],
+      player5: ['smiling.MOV', 'concert.mp4','home_vid.mp4', 'heyleyts.MOV'],    
+    };
+
+    // === VideoLooper Class ===
+    class VideoLooper {
+      constructor(videoElementId, videoSources) {
+        this.videoElement = document.getElementById(videoElementId);
+        this.videoSources = videoSources;
+        this.currentIndex = 0;
+
+        this.setupEventListeners();
+        this.loadVideo(this.currentIndex);
+      }
+
+      setupEventListeners() {
+        this.videoElement.addEventListener('click', () => this.nextVideo());
+        this.videoElement.addEventListener('ended', () => this.nextVideo());
+      }
+
+      loadVideo(index) {
+        this.currentIndex = index % this.videoSources.length;
+        this.videoElement.src = this.videoSources[this.currentIndex];
+        this.videoElement.load();
+        this.videoElement.play();
+      }
+
+      nextVideo() {
+        this.loadVideo(this.currentIndex + 1);
+      }
+    }
+
+    // === Initialize all videos ===
+    new VideoLooper('video1', videoPlaylists.player1);
+    new VideoLooper('video2', videoPlaylists.player2);
+    new VideoLooper('video3', videoPlaylists.player3);
+    new VideoLooper('video4', videoPlaylists.player4);
+    new VideoLooper('video5', videoPlaylists.player5);
+
+    (function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+
+            if (entry.target.id === 'typeText' || entry.target.id === 'typing') {
+              entry.target.classList.add('animate');
+            }
+
+            // Optional: stop observing after triggered once
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      document.querySelectorAll('.box, #typeText, #typing').forEach(el => observer.observe(el));
+    })();
+   
+    
+    </script>
+</body>
+</html>
